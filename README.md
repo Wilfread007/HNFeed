@@ -129,6 +129,4 @@ For an app with moderate complexity and shared global state, I’d choose **Redu
 ### Q5 — Offline-First UX Strategy
 
 I’d detect connectivity with `@react-native-community/netinfo`, cache API data locally (e.g., AsyncStorage/SQLite) using a stale-while-revalidate strategy, handle cache invalidation with TTL or versioning, and sync updates when back online—trading increased complexity and storage use for a seamless offline UX.
-# HNFeed
-# HNFeed
-# HNFeed
+
