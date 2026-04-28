@@ -7,13 +7,34 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "clean:android": "cd android && ./gradlew clean && cd ../",
+    "clean:ios": "rm -rf ios/build && cd ios && xcodebuild clean && cd ../",
+    "build:android": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ../",
+    "clean": "npm run clean:android && npm run clean:ios",
+    "pod": "cd ios && pod install && cd ..",
+    "key": "keytool -list -v -keystore android/app/my-release-key.keystore -alias my-key-alias"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@react-native-community/netinfo": "^11.1.0",
+    "@react-native/new-app-screen": "0.85.2",
+    "@react-navigation/bottom-tabs": "^6.5.20",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "axios": "^1.15.2",
     "react": "19.2.3",
     "react-native": "0.85.2",
-    "@react-native/new-app-screen": "0.85.2",
-    "react-native-safe-area-context": "^5.5.2"
+    "react-native-elements": "^3.4.3",
+    "react-native-gesture-handler": "^2.15.0",
+    "react-native-inappbrowser-reborn": "^3.7.1",
+    "react-native-reanimated": "^4.3.0",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-screens": "^4.24.0",
+    "react-native-swipeable-item": "^2.0.0",
+    "react-native-vector-icons": "^10.3.0",
+    "react-native-worklets": "^0.8.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -35,6 +56,25 @@
     "prettier": "2.8.8",
     "react-test-renderer": "19.2.3",
     "typescript": "^5.8.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFilesAfterFramework": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|@react-native|@react-navigation|zustand)/)"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ]
   },
   "engines": {
     "node": ">= 22.11.0"
