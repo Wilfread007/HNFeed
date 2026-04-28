@@ -95,3 +95,38 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+## Section 02 — Technical Questions
+
+---
+
+### Q1 — Bridge vs JSI & The New Architecture
+
+JSI replaces the Bridge by enabling direct, synchronous communication between JavaScript and native code without JSON serialization, and the new architecture (Fabric + TurboModules) builds on this to improve performance, rendering speed, and module loading efficiency.
+
+---
+
+### Q2 — Diagnosing a Janky FlatList
+
+I would profile the list to identify JS/UI bottlenecks, then reduce unnecessary re-renders, tune FlatList optimization props, use getItemLayout for fixed heights, and optimize heavy components or switch to a more performant list like FlashList.
+
+---
+
+### Q3 — useCallback and useMemo
+
+Use useCallback/useMemo helps when stabilizing props (like renderItem in a large FlatList) to prevent unnecessary re-renders, but overusing useMemo on cheap computations adds overhead and can actually degrade performance instead of improving it.
+
+---
+
+### Q4 — State Management Decision
+
+For an app with moderate complexity and shared global state, I’d choose **Redux Toolkit** for its scalability, structured state management, and strong ecosystem; I’d switch to **Zustand** if I wanted a lighter, simpler setup, or use **Context API** only for small, low-frequency state like theme.
+
+
+---
+
+### Q5 — Offline-First UX Strategy
+
+I’d detect connectivity with `@react-native-community/netinfo`, cache API data locally (e.g., AsyncStorage/SQLite) using a stale-while-revalidate strategy, handle cache invalidation with TTL or versioning, and sync updates when back online—trading increased complexity and storage use for a seamless offline UX.
+# HNFeed
